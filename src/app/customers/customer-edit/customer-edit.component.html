@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!customerForm.valid">Save</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="surName">surName</label>
+            <input
+              type="text"
+              id="surName"
+              formControlName="surName"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="password">userName</label>
+            <input
+              type="text"
+              id="userName"
+              formControlName="userName"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="password">password</label>
+            <input
+              type="text"
+              id="password"
+              formControlName="password"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="building">building</label>
+            <input
+              type="text"
+              id="building"
+              formControlName="building"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="roomNumber">roomNumber</label>
+            <input
+              type="text"
+              id="roomNumber"
+              formControlName="roomNumber"
+              class="form-control"
+              #roomNumber>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="floor">floor</label>
+            <input
+              type="text"
+              id="floor"
+              formControlName="floor"
+              class="form-control"
+              #roomNumber>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

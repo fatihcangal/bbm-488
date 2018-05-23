@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success" (click)="onNewCustomer()">New Recipe</button>
+    <button class="btn btn-success" (click)="onNewCustomer()">New Customer</button>
   </div>
 </div>
 <hr>
@@ -11,5 +11,6 @@
       [customer]="recipeEl"
       [index]="i"></app-customer-item>
   </div>
+  <button class="btn btn-default" [routerLink]="routerLinkVariable">Main Page</button>
 </div>
 

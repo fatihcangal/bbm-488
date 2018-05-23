@@ -13,7 +13,7 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   id: number;
 
-  constructor(private recipeService: ProductService,
+  constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private router: Router) {
   }
@@ -23,22 +23,17 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.product = this.recipeService.getRecipe(this.id);
+          this.product = this.productService.getProduct(this.id);
         }
       );
   }
-
-  onAddToShoppingList() {
-    this.recipeService.addIngredientsToShoppingList(this.product.ingredients);
-  }
-
-  onEditRecipe() {
+  onEditProduct() {
     this.router.navigate(['edit'], {relativeTo: this.route});
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
-  onDeleteRecipe() {
-    this.recipeService.deleteRecipe(this.id);
+  onDeleteProduct() {
+    this.productService.deleteProduct(this.id);
     this.router.navigate(['/products']);
   }
 

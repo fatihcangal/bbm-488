@@ -14,7 +14,7 @@ import {LoginComponent} from './login/login.component';
 import {AdminComponent} from './admin/admin.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: 'products', component: ProductsComponent, children: [
     { path: '', component: ProductStartComponent },
     { path: 'new', component: ProductEditComponent },

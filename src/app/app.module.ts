@@ -49,7 +49,6 @@ import {AdminComponent} from './admin/admin.component';
     CustomerListComponent,
     CustomerStartComponent,
     LoginComponent,
-    DashboardComponent,
     AdminComponent
   ],
   imports: [

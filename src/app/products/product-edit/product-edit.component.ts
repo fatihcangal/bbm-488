@@ -12,10 +12,12 @@ import { ProductService } from '../product.service';
 export class ProductEditComponent implements OnInit {
   id: number;
   editMode = false;
-  recipeForm: FormGroup;
+  productForm: FormGroup;
+  public routerLinkVariable = '/admin';
+
 
   constructor(private route: ActivatedRoute,
-              private recipeService: ProductService,
+              private productService: ProductService,
               private router: Router) {
   }
 
@@ -37,27 +39,11 @@ export class ProductEditComponent implements OnInit {
     //   this.recipeForm.value['imagePath'],
     //   this.recipeForm.value['ingredients']);
     if (this.editMode) {
-      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+      this.productService.updateProduct(this.id, this.productForm.value);
     } else {
-      this.recipeService.addRecipe(this.recipeForm.value);
+      this.productService.addProduct(this.productForm.value);
     }
     this.onCancel();
-  }
-
-  onAddIngredient() {
-    (<FormArray>this.recipeForm.get('ingredients')).push(
-      new FormGroup({
-        'name': new FormControl(null, Validators.required),
-        'amount': new FormControl(null, [
-          Validators.required,
-          Validators.pattern(/^[1-9]+[0-9]*$/)
-        ])
-      })
-    );
-  }
-
-  onDeleteIngredient(index: number) {
-    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
   onCancel() {
@@ -66,35 +52,16 @@ export class ProductEditComponent implements OnInit {
 
   private initForm() {
     let recipeName = '';
-    let recipeImagePath = '';
-    let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
-
+    let recipeAmount = '';
     if (this.editMode) {
-      const product = this.recipeService.getRecipe(this.id);
+      const product = this.productService.getProduct(this.id);
       recipeName = product.name;
-      recipeImagePath = product.imagePath;
-      recipeDescription = product.description;
-      if (product['ingredients']) {
-        for (let ingredient of product.ingredients) {
-          recipeIngredients.push(
-            new FormGroup({
-              'name': new FormControl(ingredient.name, Validators.required),
-              'amount': new FormControl(ingredient.amount, [
-                Validators.required,
-                Validators.pattern(/^[1-9]+[0-9]*$/)
-              ])
-            })
-          );
-        }
-      }
+      recipeAmount = product.amount;
     }
 
-    this.recipeForm = new FormGroup({
+    this.productForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),
-      'imagePath': new FormControl(recipeImagePath, Validators.required),
-      'description': new FormControl(recipeDescription, Validators.required),
-      'ingredients': recipeIngredients
+      'amount': new FormControl(recipeAmount, Validators.required),
     });
   }
 

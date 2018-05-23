@@ -13,6 +13,7 @@ import { CustomerService } from '../customer.service';
 export class CustomerListComponent implements OnInit, OnDestroy {
   customers: Customer[];
   subscription: Subscription;
+  public routerLinkVariable = '/admin';
 
   constructor(private customerService: CustomerService,
               private router: Router,

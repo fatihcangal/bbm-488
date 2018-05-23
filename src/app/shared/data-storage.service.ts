@@ -7,13 +7,13 @@ import { Product } from '../products/product.model';
 
 @Injectable()
 export class DataStorageService {
-  constructor(private http: Http, private recipeService: ProductService) {}
+  constructor(private http: Http, private productService: ProductService) {}
 
-  storeRecipes() {
-    return this.http.put('https://ng-recipe-book.firebaseio.com/products.json', this.recipeService.getRecipes());
+  storeProducts() {
+    return this.http.put('https://ng-recipe-book.firebaseio.com/products.json', this.productService.getProducts());
   }
 
-  getRecipes() {
+  getProducts() {
     this.http.get('https://ng-recipe-book.firebaseio.com/products.json')
       .map(
         (response: Response) => {
@@ -28,7 +28,7 @@ export class DataStorageService {
       )
       .subscribe(
         (recipes: Product[]) => {
-          this.recipeService.setRecipes(recipes);
+          this.productService.setProducts(recipes);
         }
       );
   }

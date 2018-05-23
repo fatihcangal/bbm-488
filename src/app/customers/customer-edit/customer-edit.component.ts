@@ -13,7 +13,8 @@ export class CustomerEditComponent implements OnInit {
   id: number;
   editMode = false;
   customerForm: FormGroup;
-
+  public routerLinkVariable = '/shopping-list';
+  public routerLinkVariable1 = '/products';
   constructor(private route: ActivatedRoute,
               private customerService: CustomerService,
               private router: Router) {

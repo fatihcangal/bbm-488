@@ -11,7 +11,7 @@ export class HeaderComponent {
   constructor(private dataStorageService: DataStorageService) {}
 
   onSaveData() {
-    this.dataStorageService.storeRecipes()
+    this.dataStorageService.storeProducts()
       .subscribe(
         (response: Response) => {
           console.log(response);
@@ -20,6 +20,6 @@ export class HeaderComponent {
   }
 
   onFetchData() {
-    this.dataStorageService.getRecipes();
+    this.dataStorageService.getProducts();
   }
 }

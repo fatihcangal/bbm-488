@@ -7,22 +7,22 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class ProductService {
-  recipesChanged = new Subject<Product[]>();
+  productsChanged = new Subject<Product[]>();
 
   private products: Product[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
-  setRecipes(products: Product[]) {
+  setProducts(products: Product[]) {
     this.products = products;
-    this.recipesChanged.next(this.products.slice());
+    this.productsChanged.next(this.products.slice());
   }
 
-  getRecipes() {
+  getProducts() {
     return this.products.slice();
   }
 
-  getRecipe(index: number) {
+  getProduct(index: number) {
     return this.products[index];
   }
 
@@ -30,18 +30,18 @@ export class ProductService {
     this.slService.addIngredients(ingredients);
   }
 
-  addRecipe(product: Product) {
+  addProduct(product: Product) {
     this.products.push(product);
-    this.recipesChanged.next(this.products.slice());
+    this.productsChanged.next(this.products.slice());
   }
 
-  updateRecipe(index: number, newRecipe: Product) {
+  updateProduct(index: number, newRecipe: Product) {
     this.products[index] = newRecipe;
-    this.recipesChanged.next(this.products.slice());
+    this.productsChanged.next(this.products.slice());
   }
 
-  deleteRecipe(index: number) {
+  deleteProduct(index: number) {
     this.products.splice(index, 1);
-    this.recipesChanged.next(this.products.slice());
+    this.productsChanged.next(this.products.slice());
   }
 }

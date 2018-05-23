@@ -1,14 +1,5 @@
 <div class="row">
   <div class="col-xs-12">
-    <img
-      [src]="customer.imagePath"
-      alt="{{ customer.name }}"
-      class="img-responsive"
-      style="max-height: 300px;">
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
     <h1>{{ customer.name }}</h1>
   </div>
 </div>
@@ -28,11 +19,6 @@
         <li><a style="cursor: pointer;" (click)="onDeleteCustomer()">Delete customer</a></li>
       </ul>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    {{ customer.description }}
   </div>
 </div>
 <div class="row">
